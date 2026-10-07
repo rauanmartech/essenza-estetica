@@ -72,8 +72,16 @@
       .hero-top { position: absolute; z-index: 1; inset: 0 0 auto; height: 39%; padding: 83px var(--hero-gutter) 0; }
       .hero .eyebrow { color: var(--clay); margin-bottom: 10px; }
       .hero-band { position: absolute; inset: auto 0 0; height: 61%; background: var(--olive); }
+      .hero-band::before, .hero-band::after { content: ""; position: absolute; z-index: 1; top: -36px; width: 72px; height: 72px; border-radius: 50%; background: var(--cream); pointer-events: none; }
+      .hero-band::before { left: -36px; }
+      .hero-band::after { right: -36px; }
       .hero-band-copy { position: relative; z-index: 3; width: calc(390px + var(--hero-gutter)); padding: 44px 0 0 var(--hero-gutter); }
       .hero-model { position: absolute; z-index: 2; bottom: -2px; left: -11%; width: 122%; max-width: none; height: auto; pointer-events: none; filter: drop-shadow(0 12px 12px rgba(37,43,35,.08)); }
+      .hero-media-cards { position: absolute; z-index: 4; top: 112px; right: var(--hero-gutter); display: flex; gap: 8px; }
+      .hero-media-card { width: 112px; height: 98px; overflow: hidden; border: 3px solid var(--cream); border-radius: 12px; background: var(--sand); box-shadow: 0 12px 28px rgba(37,43,35,.15); }
+      .hero-media-card img { width: 100%; height: 100%; object-fit: cover; }
+      .hero-media-card:first-child img { object-position: 78% center; }
+      .hero-media-card:last-child img { object-position: 55% 18%; }
       h1, h2, h3, p { margin-top: 0; }
       .hero h1 { max-width: 540px; margin-bottom: 0; color: var(--olive-deep); font-family: var(--serif); font-size: clamp(3rem, 4.5vw, 4rem); font-weight: 500; line-height: 1.02; letter-spacing: -.055em; }
       .hero-lede { max-width: 330px; margin-bottom: 22px; color: rgba(255,255,255,.9); font-size: 1.04rem; line-height: 1.48; }
@@ -169,8 +177,13 @@
         .hero-top { height: 51%; padding: 92px var(--hero-gutter) 0; }
         .hero h1 { max-width: 500px; font-size: 3rem; }
         .hero-band { height: 49%; }
+        .hero-band::before, .hero-band::after { top: -28px; width: 56px; height: 56px; }
+        .hero-band::before { left: -28px; }
+        .hero-band::after { right: -28px; }
         .hero-band-copy { width: 310px; padding: 36px 0 0 var(--hero-gutter); }
         .hero-model { width: 180%; left: -45%; }
+        .hero-media-cards { top: 80px; gap: 6px; }
+        .hero-media-card { width: 55px; height: 44px; border-width: 2px; border-radius: 8px; }
         .proof-grid { grid-template-columns: repeat(2, 1fr); }
         .proof-item { min-height: 105px; }
         section { padding: 92px 0; }
@@ -188,6 +201,9 @@
         .hero-top { height: 55%; padding: 102px var(--hero-gutter) 0; }
         .hero h1 { max-width: 310px; font-size: clamp(2.65rem, 11vw, 3.5rem); }
         .hero-band { height: 45%; }
+        .hero-band::before, .hero-band::after { top: -22px; width: 44px; height: 44px; }
+        .hero-band::before { left: -22px; }
+        .hero-band::after { right: -22px; }
         .hero-band-copy { width: min(255px, 77%); padding: 28px 0 0 var(--hero-gutter); }
         .hero-lede { max-width: 210px; font-size: .93rem; }
         .hero-model { width: 260%; left: -94%; }
@@ -226,6 +242,10 @@
         <div class="hero-top">
           <p class="eyebrow">Essenza Estética</p>
           <h1>A sua beleza, na sua melhor versão.</h1>
+        </div>
+        <div class="hero-media-cards" aria-hidden="true">
+          <div class="hero-media-card"><img src="assets/hero-essenza.png" alt="" /></div>
+          <div class="hero-media-card"><img src="assets/about-essenza.png" alt="" /></div>
         </div>
         <div class="hero-band">
           <div class="hero-band-copy">
