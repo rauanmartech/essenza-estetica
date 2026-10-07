@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Essenza">
+  <rect width="64" height="64" rx="15" fill="#f7f4ed"/>
+  <g fill="#515946">
+    <path d="M32 30C22 22 24 14 32 3c8 11 10 19 0 27Z"/>
+    <path d="M29 32C20 34 12 30 3 20c12-5 21-3 26 12Z"/>
+    <path d="M35 32c9 2 17-2 26-12-12-5-21-3-26 12Z"/>
+    <path d="M29 37c-9-3-17 4-19 23 13-2 22-10 19-23Z"/>
+    <path d="M35 37c9-3 17 4 19 23-13-2-22-10-19-23Z"/>
+  </g>
+</svg>

@@ -3,10 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Essenza Estética — tratamentos personalizados para realçar sua beleza com naturalidade, precisão e sofisticação." />
+    <meta name="description" content="Na Essenza Estética, o cuidado é personalizado para realçar sua beleza com naturalidade, precisão e sofisticação." />
     <meta name="theme-color" content="#515946" />
-    <title>Essenza Estética — Sua beleza, na sua melhor versão</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23515946'/%3E%3Cpath d='M32 15c-2 12-7 18-15 20 8 2 13 8 15 19 2-11 7-17 15-19-8-2-13-8-15-20Z' fill='%23f2f2f2'/%3E%3C/svg%3E" />
+    <title>Essenza Estética — A sua beleza, na sua melhor versão</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Essenza Estética" />
+    <meta property="og:title" content="Essenza Estética — A sua beleza, na sua melhor versão" />
+    <meta property="og:description" content="Na Essenza Estética, o cuidado é personalizado para realçar sua beleza com naturalidade, precisão e sofisticação." />
+    <!-- SOCIAL_URLS: preenchidas com o domínio público durante o build na Vercel -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Essenza Estética — A sua beleza, na sua melhor versão" />
+    <meta name="twitter:description" content="Na Essenza Estética, o cuidado é personalizado para realçar sua beleza com naturalidade, precisão e sofisticação." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
@@ -46,42 +55,45 @@
       .site-header {
         position: fixed;
         z-index: 50;
-        top: 18px;
+        top: 16px;
         left: 50%;
-        width: min(1160px, calc(100% - 48px));
+        width: min(1320px, calc(100% - 48px));
         transform: translateX(-50%);
-        border: 1px solid rgba(255,255,255,.28);
+        border: 1px solid transparent;
         border-radius: 999px;
-        background: rgba(48,56,45,.72);
-        box-shadow: 0 14px 38px rgba(27,33,25,.17);
+        background: transparent;
+        color: var(--olive-deep);
+        transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
+      }
+      .site-header.is-scrolled {
+        border-color: rgba(255,255,255,.58);
+        background: rgba(247,244,237,.73);
+        box-shadow: 0 12px 36px rgba(37,43,35,.11);
         -webkit-backdrop-filter: blur(18px) saturate(130%);
         backdrop-filter: blur(18px) saturate(130%);
-        color: #fff;
       }
-      .site-header .nav-wrap { display: flex; width: 100%; align-items: center; justify-content: space-between; padding: 10px 13px 10px 22px; }
-      .brand { display: inline-flex; align-items: center; gap: 12px; letter-spacing: .18em; font-size: .78rem; font-weight: 600; }
-      .brand-mark { display: grid; width: 29px; height: 29px; place-items: center; border: 1px solid rgba(255,255,255,.66); border-radius: 50%; font-family: var(--serif); font-size: 1rem; font-style: italic; letter-spacing: 0; }
-      .nav-links { display: flex; align-items: center; gap: 5px; font-size: .8rem; }
-      .nav-links a { padding: 9px 13px; border-radius: 999px; background: rgba(255,255,255,.07); transition: background .2s ease, color .2s ease; }
-      .nav-links a:hover, .nav-links a:focus-visible { background: rgba(255,255,255,.19); }
-      .nav-cta { background: var(--cream) !important; color: var(--olive-deep); font-weight: 600; }
-      .nav-cta:hover, .nav-cta:focus-visible { background: #fff !important; }
-      .menu-toggle { display: none; border: 0; background: none; color: #fff; font: inherit; font-size: 1.2rem; }
+      .site-header .nav-wrap { display: grid; grid-template-columns: 1fr auto 1fr; width: 100%; align-items: center; min-height: 58px; padding: 7px 12px 7px 18px; }
+      .brand { display: inline-flex; width: max-content; align-items: center; }
+      .brand-logo { width: auto; height: 34px; max-width: none; }
+      .nav-links { display: flex; align-items: center; gap: clamp(8px, 1vw, 16px); font-size: .76rem; }
+      .nav-links a { padding: 8px 3px; border-radius: 999px; transition: color .2s ease, opacity .2s ease; }
+      .nav-links a:hover, .nav-links a:focus-visible { color: var(--clay); }
+      .nav-links .nav-cta { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); padding: 10px 18px; background: var(--olive-deep); color: #fff; font-size: .72rem; font-weight: 600; }
+      .nav-links .nav-cta:hover, .nav-links .nav-cta:focus-visible { background: var(--olive); color: #fff; }
+      .menu-toggle { display: none; border: 0; background: none; color: inherit; font: inherit; font-size: 1.2rem; }
 
       .hero { --hero-gutter: max(24px, calc((100vw - 1040px) / 2)); position: relative; isolation: isolate; width: 100%; aspect-ratio: 16 / 9; min-height: 0; overflow: hidden; margin: 0; padding: 0; background: var(--cream); }
       .hero-top { position: absolute; z-index: 1; inset: 0 0 auto; height: 39%; padding: 83px var(--hero-gutter) 0; }
       .hero .eyebrow { color: var(--clay); margin-bottom: 10px; }
-      .hero-band { position: absolute; inset: auto 0 0; height: 61%; background: var(--olive); }
-      .hero-band::before, .hero-band::after { content: ""; position: absolute; z-index: 1; top: -36px; width: 72px; height: 72px; border-radius: 50%; background: var(--cream); pointer-events: none; }
-      .hero-band::before { left: -36px; }
-      .hero-band::after { right: -36px; }
+      .hero-band { position: absolute; inset: auto 0 0; height: 61%; border-radius: 48px 48px 0 0; background: var(--olive); }
       .hero-band-copy { position: relative; z-index: 3; width: calc(390px + var(--hero-gutter)); padding: 44px 0 0 var(--hero-gutter); }
-      .hero-model { position: absolute; z-index: 2; bottom: -2px; left: -11%; width: 122%; max-width: none; height: auto; pointer-events: none; filter: drop-shadow(0 12px 12px rgba(37,43,35,.08)); }
+      .hero-model { position: absolute; z-index: 2; bottom: calc(-.68vw - 1px); left: -11%; width: 122%; max-width: none; height: auto; pointer-events: none; filter: drop-shadow(0 12px 12px rgba(37,43,35,.08)); }
       .hero-media-cards { position: absolute; z-index: 4; top: 112px; right: var(--hero-gutter); display: flex; gap: 8px; }
-      .hero-media-card { width: 112px; height: 98px; overflow: hidden; border: 3px solid var(--cream); border-radius: 12px; background: var(--sand); box-shadow: 0 12px 28px rgba(37,43,35,.15); }
+      .hero-media-card { width: 112px; height: 98px; overflow: hidden; border-radius: 12px; background: var(--sand); box-shadow: 0 12px 28px rgba(37,43,35,.15); }
       .hero-media-card img { width: 100%; height: 100%; object-fit: cover; }
       .hero-media-card:first-child img { object-position: 78% center; }
-      .hero-media-card:last-child img { object-position: 55% 18%; }
+      .hero-media-card:nth-child(2) img { object-position: 55% 18%; }
+      .hero-media-card:nth-child(3) img { object-position: 55% center; }
       h1, h2, h3, p { margin-top: 0; }
       .hero h1 { max-width: 540px; margin-bottom: 0; color: var(--olive-deep); font-family: var(--serif); font-size: clamp(3rem, 4.5vw, 4rem); font-weight: 500; line-height: 1.02; letter-spacing: -.055em; }
       .hero-lede { max-width: 330px; margin-bottom: 22px; color: rgba(255,255,255,.9); font-size: 1.04rem; line-height: 1.48; }
@@ -94,61 +106,102 @@
       .hero .button-ghost { min-height: 38px; padding: 0 16px; border: 1px solid rgba(255,255,255,.6); border-radius: 999px; background: rgba(48,56,45,.78); }
       .hero .button-ghost:hover, .hero .button-ghost:focus-visible { background: var(--olive-deep); color: #fff; }
 
-      .proof-strip { position: relative; z-index: 2; margin-top: 0; background: var(--olive); color: #fff; }
-      .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-left: 1px solid rgba(255,255,255,.16); }
-      .proof-item { min-height: 126px; padding: 27px 25px 25px; border-right: 1px solid rgba(255,255,255,.16); }
-      .proof-number { display: block; margin-bottom: 9px; color: #e1b383; font-family: var(--serif); font-size: 1.8rem; line-height: 1; }
-      .proof-label { display: block; color: rgba(255,255,255,.75); font-size: .75rem; }
+      .highlights { padding: 100px 0 108px; background: #fbfaf7; }
+      .highlights-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(64px, 10vw, 150px); }
+      .highlights-intro { max-width: 420px; }
+      .highlights-intro .eyebrow { margin-bottom: 20px; }
+      .highlights-intro h2 { margin-bottom: 22px; color: var(--olive-deep); font-family: var(--serif); font-size: clamp(2.8rem, 4.2vw, 4.4rem); font-weight: 500; line-height: 1.08; letter-spacing: -.045em; }
+      .highlights-intro h2 em { color: var(--clay); font-weight: 500; }
+      .highlights-intro > p:not(.eyebrow) { max-width: 345px; margin-bottom: 28px; color: rgba(37,43,35,.74); line-height: 1.55; }
+      .highlights-intro .button { background: var(--olive); color: #fff; }
+      .highlights-intro .button:hover, .highlights-intro .button:focus-visible { background: var(--olive-deep); }
+      .highlight-list { border-top: 1px solid var(--line); }
+      .highlight-item { display: grid; grid-template-columns: 92px minmax(0, 1fr); align-items: center; gap: 22px; min-height: 112px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+      .highlight-item img { width: 92px; height: 82px; border-radius: 10px; object-fit: cover; }
+      .highlight-item h3 { margin-bottom: 2px; color: var(--olive-deep); font-size: 1.05rem; font-weight: 600; line-height: 1.25; }
+      .highlight-item p { margin-bottom: 0; color: rgba(37,43,35,.62); font-size: .88rem; line-height: 1.4; }
 
       section { padding: 132px 0; }
-      .manifesto { background: var(--cream); }
-      .manifesto-grid { display: grid; grid-template-columns: 1fr 1.36fr; gap: 11%; align-items: end; }
+      .manifesto { position: relative; isolation: isolate; min-height: 650px; overflow: hidden; background: var(--cream); }
+      .manifesto-founder { position: absolute; z-index: 1; bottom: 0; left: 34%; width: min(38vw, 520px); max-width: none; height: auto; pointer-events: none; }
+      .manifesto-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1.36fr; gap: 11%; align-items: end; }
       .manifesto h2 { max-width: 720px; margin: 20px 0 22px; font-family: var(--serif); font-size: clamp(2.6rem, 5vw, 5.2rem); font-weight: 500; line-height: 1.02; letter-spacing: -.045em; }
       .manifesto h2 em { color: var(--clay); font-weight: 500; }
-      .manifesto-copy { max-width: 380px; margin-left: auto; color: rgba(37,43,35,.72); }
+      .manifesto-copy { position: relative; isolation: isolate; max-width: 380px; margin-left: auto; color: rgba(37,43,35,.72); }
+      .manifesto-copy::before { content: ""; position: absolute; z-index: -1; inset: -38px -52px; pointer-events: none; background: radial-gradient(ellipse at 52% 50%, rgba(247,244,237,.97) 0%, rgba(247,244,237,.88) 40%, rgba(247,244,237,.54) 65%, rgba(247,244,237,0) 85%); filter: blur(14px); }
       .manifesto-copy p { margin-bottom: 24px; }
       .text-link { display: inline-flex; align-items: center; gap: 10px; color: var(--olive); font-size: .78rem; font-weight: 600; }
       .text-link::after { content: ""; display: inline-block; width: 28px; height: 1px; background: currentColor; transition: width .2s ease; }
       .text-link:hover::after { width: 40px; }
 
-      .treatments { background: var(--sand); }
-      .section-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 48px; }
-      .section-head h2 { margin: 15px 0 0; font-family: var(--serif); font-size: clamp(2.5rem, 4.4vw, 4.6rem); font-weight: 500; line-height: 1; letter-spacing: -.045em; }
-      .section-intro { max-width: 340px; margin-bottom: 4px; color: rgba(37,43,35,.68); font-size: .92rem; }
-      .treatment-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-      .treatment-card { min-height: 340px; display: flex; flex-direction: column; justify-content: space-between; padding: 26px; background: rgba(242,242,242,.67); transition: background .25s ease, transform .25s ease; }
-      .treatment-card:hover { transform: translateY(-5px); background: var(--cream); }
-      .treatment-card:nth-child(2) { background: var(--olive); color: #fff; }
-      .treatment-card:nth-child(2):hover { background: var(--olive-deep); }
-      .treatment-index { display: flex; justify-content: space-between; color: var(--terracotta); font-size: .72rem; letter-spacing: .14em; }
-      .treatment-card:nth-child(2) .treatment-index { color: #e3b98c; }
-      .treatment-card h3 { max-width: 190px; margin: auto 0 15px; font-family: var(--serif); font-size: 1.85rem; font-weight: 500; line-height: 1.02; }
-      .treatment-card p { max-width: 240px; margin: 0; color: rgba(37,43,35,.68); font-size: .84rem; line-height: 1.5; }
-      .treatment-card:nth-child(2) p { color: rgba(255,255,255,.72); }
-      .card-symbol { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid currentColor; border-radius: 50%; color: var(--terracotta); font-family: var(--serif); font-size: 1.2rem; }
-      .treatment-card:nth-child(2) .card-symbol { color: #e3b98c; }
+      .treatments { padding: 106px 0 112px; background: #fbfaf7; }
+      .treatments-head { margin-bottom: 50px; text-align: center; }
+      .treatments-head .eyebrow { margin-bottom: 12px; }
+      .treatments-head h2 { margin: 0; color: var(--olive-deep); font-family: var(--serif); font-size: clamp(2.8rem, 4.4vw, 4.6rem); font-weight: 500; line-height: 1.06; letter-spacing: -.045em; }
+      .treatments-head h2 em { color: var(--clay); font-weight: 500; }
+      .treatment-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; border: 1px solid rgba(37,43,35,.18); background: rgba(37,43,35,.18); }
+      .treatment-card { display: block; min-width: 0; padding: 22px 19px 24px; background: #fbfaf7; }
+      .treatment-card:focus-visible { outline: 2px solid var(--olive); outline-offset: 6px; border-radius: 12px; }
+      .treatment-copy { display: flex; justify-content: space-between; gap: 10px; min-height: 92px; }
+      .treatment-card h3 { margin: 0 0 6px; color: var(--olive-deep); font-size: 1.02rem; font-weight: 600; line-height: 1.25; }
+      .treatment-card p { margin: 0; color: rgba(37,43,35,.62); font-size: .81rem; line-height: 1.4; }
+      .treatment-arrow { display: grid; flex: none; width: 30px; height: 30px; place-items: center; border-radius: 50%; background: var(--olive); color: #fff; font-size: .9rem; line-height: 1; transition: transform .2s ease, background .2s ease; }
+      .treatment-card:hover .treatment-arrow, .treatment-card:focus-visible .treatment-arrow { transform: translate(2px, -2px); background: var(--olive-deep); }
+      .treatment-card img { width: 100%; aspect-ratio: 4 / 3; border-radius: 14px; object-fit: cover; }
+      .treatments-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 46px; }
+      .treatments-actions .button { min-width: 185px; background: var(--olive); color: #fff; }
+      .treatments-actions .button:hover, .treatments-actions .button:focus-visible { background: var(--olive-deep); }
+      .treatments-actions .button-outline { border-color: var(--olive); background: transparent; color: var(--olive-deep); }
+      .treatments-actions .button-outline:hover, .treatments-actions .button-outline:focus-visible { background: rgba(81,89,70,.1); }
 
-      .approach { background: var(--cream); }
-      .approach-grid { display: grid; grid-template-columns: minmax(260px, .85fr) 1fr; gap: 11%; align-items: center; }
-      .approach-image-wrap { position: relative; padding: 0 30px 30px 0; }
-      .approach-image-wrap::after { content: ""; position: absolute; right: 0; bottom: 0; width: 68%; height: 58%; background: var(--terracotta); z-index: 0; }
-      .approach-image { position: relative; z-index: 1; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; }
-      .approach-content h2 { max-width: 590px; margin: 18px 0 25px; font-family: var(--serif); font-size: clamp(2.6rem, 5.2vw, 5.2rem); font-weight: 500; line-height: 1.02; letter-spacing: -.05em; }
+      .specialists { padding: 104px 0 112px; background: var(--cream); }
+      .specialists-header { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+      .specialists-header h2 { margin: 0; color: var(--olive-deep); font-size: clamp(2.2rem, 3.7vw, 3.7rem); font-weight: 500; line-height: 1.05; letter-spacing: -.05em; }
+      .specialists-header h2 em { display: block; color: var(--clay); font-family: var(--serif); font-weight: 500; letter-spacing: -.04em; }
+      .specialists-controls { display: flex; flex: none; gap: 8px; padding-bottom: 4px; }
+      .specialists-controls button { display: grid; width: 40px; height: 40px; place-items: center; border: 0; border-radius: 50%; background: var(--olive); color: #fff; font: inherit; font-size: 1.12rem; line-height: 1; cursor: pointer; transition: background .2s ease, opacity .2s ease; }
+      .specialists-controls button:hover, .specialists-controls button:focus-visible { background: var(--olive-deep); }
+      .specialists-controls button:disabled { opacity: .38; cursor: default; }
+      .specialists-track { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; overscroll-behavior-inline: contain; }
+      .specialists-track::-webkit-scrollbar { display: none; }
+      .specialist-card { flex: 0 0 clamp(205px, 22vw, 252px); min-width: 0; scroll-snap-align: start; }
+      .specialist-card img { width: 100%; aspect-ratio: 4 / 5; border-radius: 13px; object-fit: cover; object-position: center 20%; background: #e8e0d6; }
+      .specialist-card h3 { margin: 13px 0 3px; color: var(--olive-deep); font-size: 1rem; font-weight: 600; line-height: 1.3; }
+      .specialist-card p { max-width: 240px; margin: 0; color: rgba(37,43,35,.62); font-size: .875rem; line-height: 1.4; }
+
+      .approach { display: grid; align-items: center; width: 100%; min-height: 620px; aspect-ratio: 3 / 1; padding: 56px 0; background-color: var(--cream); background-image: linear-gradient(90deg, rgba(247,244,237,.96) 0%, rgba(247,244,237,.91) 22%, rgba(247,244,237,.78) 43%, rgba(247,244,237,.56) 56%, rgba(247,244,237,0) 71%), url("assets/abordagem-fundo.png"); background-position: center, 62% center; background-size: cover; background-repeat: no-repeat; }
+      .approach-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: center; width: 100%; gap: 0; padding: 0 clamp(24px, 3.5vw, 72px); }
+      .approach-content { min-width: 0; padding-right: clamp(20px, 2.5vw, 48px); }
+      .approach-content h2 { max-width: 590px; margin: 18px 0 25px; font-family: var(--serif); font-size: clamp(2.6rem, 3.45vw, 4.2rem); font-weight: 500; line-height: 1.02; letter-spacing: -.05em; }
       .approach-content h2 em { color: var(--clay); font-weight: 500; }
-      .approach-lede { max-width: 490px; margin-bottom: 37px; color: rgba(37,43,35,.7); font-size: 1.02rem; }
-      .feature-list { display: grid; grid-template-columns: repeat(2, minmax(130px, 1fr)); gap: 22px 28px; max-width: 550px; padding-top: 26px; border-top: 1px solid var(--line); }
-      .feature { display: flex; gap: 12px; align-items: flex-start; color: var(--olive); font-size: .84rem; font-weight: 600; line-height: 1.35; }
+      .approach-lede { max-width: 490px; margin-bottom: 0; color: rgba(37,43,35,.7); font-size: 1.02rem; }
+      .approach-features { min-width: 0; padding: 0 clamp(20px, 2.5vw, 48px); }
+      .feature-list { display: grid; grid-template-columns: 1fr; gap: 22px; max-width: 340px; padding-top: 26px; border-top: 1px solid var(--line); }
+      .feature { display: flex; gap: 12px; align-items: flex-start; color: var(--olive); font-size: .9rem; font-weight: 600; line-height: 1.35; }
       .feature span { display: grid; width: 22px; height: 22px; flex: 0 0 22px; place-items: center; border: 1px solid var(--terracotta); border-radius: 50%; color: var(--terracotta); font-size: .7rem; }
 
-      .testimonials { background: var(--olive-deep); color: #fff; }
-      .testimonials .eyebrow { color: #e3b98c; }
-      .testimonials h2 { margin: 18px 0 52px; font-family: var(--serif); font-size: clamp(2.5rem, 4vw, 4.2rem); font-weight: 500; line-height: 1.05; letter-spacing: -.04em; }
-      .quote-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-      .quote-card { display: flex; flex-direction: column; min-height: 260px; padding: 27px; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.05); }
-      .quote-mark { margin-bottom: 18px; color: #e3b98c; font-family: var(--serif); font-size: 2.6rem; line-height: .7; }
-      .quote-card blockquote { flex: 1; margin: 0; color: rgba(255,255,255,.82); font-family: var(--serif); font-size: 1.24rem; line-height: 1.35; }
-      .quote-author { padding-top: 25px; color: rgba(255,255,255,.58); font-size: .76rem; }
-      .quote-note { margin-top: 25px; color: rgba(255,255,255,.44); font-size: .71rem; }
+      .testimonials { padding: 108px 0 112px; background: var(--olive-deep); color: #fff; }
+      .testimonials-row { display: grid; grid-template-columns: clamp(190px, 29vw, 350px) minmax(0, 1fr); align-items: stretch; gap: 14px; }
+      .testimonials-track { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; overscroll-behavior-inline: contain; }
+      .testimonials-track::-webkit-scrollbar { display: none; }
+      .testimonial-card { display: flex; flex-direction: column; min-height: 430px; min-width: 0; padding: 28px; border: 1px solid rgba(81,89,70,.16); border-radius: 16px; background: #f2f4ed; color: var(--ink); }
+      .testimonials-track .testimonial-card { flex: 0 0 clamp(190px, 29vw, 350px); scroll-snap-align: start; }
+      .testimonial-intro .eyebrow { margin-bottom: 17px; color: var(--terracotta); }
+      .testimonial-intro h2 { margin: 0 0 22px; color: var(--olive-deep); font-family: var(--serif); font-size: clamp(2rem, 2.8vw, 2.8rem); font-weight: 500; line-height: 1.08; letter-spacing: -.045em; }
+      .testimonial-intro h2 em { display: block; color: var(--clay); font-weight: 500; }
+      .testimonial-controls { display: flex; gap: 8px; }
+      .testimonial-controls button { display: grid; width: 36px; height: 36px; place-items: center; border: 0; border-radius: 50%; background: var(--olive); color: #fff; font: inherit; font-size: 1.1rem; line-height: 1; cursor: pointer; transition: background .2s ease, opacity .2s ease; }
+      .testimonial-controls button:hover, .testimonial-controls button:focus-visible { background: var(--olive-deep); }
+      .testimonial-controls button:disabled { opacity: .4; cursor: default; }
+      .testimonial-avatars { display: flex; align-items: center; margin-top: auto; padding-left: 5px; }
+      .testimonial-avatars img { width: 39px; height: 39px; margin-left: -5px; border: 2px solid #f2f4ed; border-radius: 50%; object-fit: cover; }
+      .testimonial-avatars span { display: grid; width: 39px; height: 39px; margin-left: -5px; place-items: center; border: 2px solid #f2f4ed; border-radius: 50%; background: var(--sand); color: var(--olive-deep); font-size: .68rem; font-weight: 600; }
+      .testimonial-person { display: flex; align-items: center; gap: 13px; margin-bottom: 28px; }
+      .testimonial-person img { width: 66px; height: 66px; flex: none; border-radius: 50%; object-fit: cover; }
+      .testimonial-person h3 { margin: 0; color: var(--olive-deep); font-size: 1rem; font-weight: 600; line-height: 1.25; }
+      .testimonial-person p { margin: 3px 0 0; color: rgba(37,43,35,.6); font-size: .8rem; }
+      .testimonial-card blockquote { margin: 0; color: rgba(37,43,35,.82); font-size: 1rem; line-height: 1.55; }
+      .quote-note { margin: 23px 0 0; color: rgba(255,255,255,.62); font-size: .75rem; }
 
       .final-cta { padding: 112px 0; background: var(--clay); color: #fff; }
       .final-grid { display: grid; grid-template-columns: 1fr .72fr; gap: 12%; align-items: end; }
@@ -162,35 +215,43 @@
 
       footer { padding: 34px 0; background: var(--olive-deep); color: rgba(255,255,255,.58); }
       .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 25px; }
-      .footer-brand { color: #fff; }
+      .footer-brand .brand-logo { height: 38px; }
       .footer-copy { margin: 0; font-size: .73rem; }
+
+      @media (max-width: 1080px) {
+        .site-header { top: 14px; width: min(680px, calc(100% - 30px)); }
+        .site-header .nav-wrap { display: flex; justify-content: space-between; }
+        .nav-links { position: absolute; top: calc(100% + 8px); right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 4px; padding: 12px; border: 1px solid rgba(255,255,255,.65); border-radius: 20px; background: rgba(247,244,237,.94); box-shadow: 0 18px 35px rgba(27,33,25,.15); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+        .nav-links.is-open { display: flex; }
+        .nav-links a { padding: 12px 14px; }
+        .nav-links .nav-cta { position: static; transform: none; margin-top: 8px; text-align: center; }
+        .menu-toggle { display: block; }
+      }
 
       @media (max-width: 860px) {
         .container { width: min(100% - 36px, 680px); }
-        .site-header { top: 14px; width: min(680px, calc(100% - 30px)); }
-        .nav-links { position: absolute; top: calc(100% + 8px); right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 4px; padding: 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 20px; background: rgba(48,56,45,.86); box-shadow: 0 18px 35px rgba(27,33,25,.2); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
-        .nav-links.is-open { display: flex; }
-        .nav-links a { padding: 12px 14px; }
-        .nav-cta { text-align: center; margin-top: 8px; }
-        .menu-toggle { display: block; }
         .hero { --hero-gutter: 34px; width: 100%; aspect-ratio: auto; min-height: 550px; margin-top: 0; }
         .hero-top { height: 51%; padding: 92px var(--hero-gutter) 0; }
         .hero h1 { max-width: 500px; font-size: 3rem; }
-        .hero-band { height: 49%; }
-        .hero-band::before, .hero-band::after { top: -28px; width: 56px; height: 56px; }
-        .hero-band::before { left: -28px; }
-        .hero-band::after { right: -28px; }
+        .hero-band { height: 49%; border-radius: 36px 36px 0 0; }
         .hero-band-copy { width: 310px; padding: 36px 0 0 var(--hero-gutter); }
-        .hero-model { width: 180%; left: -45%; }
+        .hero-model { width: 180%; left: -45%; bottom: calc(-1vw - 1px); }
         .hero-media-cards { top: 80px; gap: 6px; }
-        .hero-media-card { width: 55px; height: 44px; border-width: 2px; border-radius: 8px; }
-        .proof-grid { grid-template-columns: repeat(2, 1fr); }
-        .proof-item { min-height: 105px; }
+        .hero-media-card { width: 55px; height: 44px; border-radius: 8px; }
+        .highlights { padding: 80px 0 88px; }
+        .highlights-grid { grid-template-columns: 1fr; gap: 52px; }
+        .highlights-intro { max-width: 550px; }
         section { padding: 92px 0; }
-        .manifesto-grid, .approach-grid, .final-grid { grid-template-columns: 1fr; gap: 48px; }
+        .manifesto { min-height: 0; }
+        .manifesto-founder { right: -4%; left: auto; width: min(50vw, 390px); }
+        .manifesto-grid, .final-grid { grid-template-columns: 1fr; gap: 48px; }
         .manifesto-copy { margin-left: 0; }
-        .treatment-grid { grid-template-columns: repeat(2, 1fr); }
-        .approach-image-wrap { max-width: 470px; }
+        .treatment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .specialists { padding: 88px 0 94px; }
+        .approach { min-height: 0; aspect-ratio: auto; padding: 82px 0 390px; background-image: linear-gradient(180deg, rgba(247,244,237,.98) 0%, rgba(247,244,237,.96) 48%, rgba(247,244,237,.84) 64%, rgba(247,244,237,0) 84%), url("assets/abordagem-fundo.png"); background-position: center, right bottom; background-size: 100% 100%, auto 58%; }
+        .approach-grid { grid-template-columns: 1fr; gap: 50px; padding: 0 36px; }
+        .approach-content { max-width: 580px; padding-right: 0; }
+        .approach-features { padding: 0; }
         .final-grid { gap: 38px; }
       }
 
@@ -200,22 +261,42 @@
         .hero { --hero-gutter: 22px; min-height: 600px; }
         .hero-top { height: 55%; padding: 102px var(--hero-gutter) 0; }
         .hero h1 { max-width: 310px; font-size: clamp(2.65rem, 11vw, 3.5rem); }
-        .hero-band { height: 45%; }
-        .hero-band::before, .hero-band::after { top: -22px; width: 44px; height: 44px; }
-        .hero-band::before { left: -22px; }
-        .hero-band::after { right: -22px; }
+        .hero-band { height: 45%; border-radius: 28px 28px 0 0; }
         .hero-band-copy { width: min(255px, 77%); padding: 28px 0 0 var(--hero-gutter); }
         .hero-lede { max-width: 210px; font-size: .93rem; }
-        .hero-model { width: 260%; left: -94%; }
+        .hero-model { width: 260%; left: -94%; bottom: calc(-1.44vw - 1px); }
         .hero .button { min-height: 42px; padding: 0 17px; }
         .hero .button-ghost { min-height: 34px; padding: 0 14px; }
-        .proof-grid, .treatment-grid, .quote-grid { grid-template-columns: 1fr; }
-        .proof-item { min-height: 0; padding: 22px 20px; }
-        .section-head { display: block; margin-bottom: 31px; }
-        .section-intro { margin-top: 20px; }
-        .treatment-card { min-height: 275px; }
-        .feature-list { grid-template-columns: 1fr; }
-        .quote-card { min-height: 220px; }
+        .highlights { padding: 68px 0 76px; }
+        .highlights-grid { gap: 42px; }
+        .highlights-intro h2 { font-size: clamp(2.65rem, 11vw, 3.5rem); }
+        .manifesto-founder { right: -15%; width: min(83vw, 350px); }
+        .manifesto-copy::before { inset: -28px -22px; background: linear-gradient(90deg, rgba(247,244,237,.98) 0%, rgba(247,244,237,.94) 46%, rgba(247,244,237,.68) 76%, rgba(247,244,237,0) 100%); filter: blur(12px); }
+        .highlight-item { grid-template-columns: 74px minmax(0, 1fr); gap: 15px; min-height: 96px; padding: 12px 0; }
+        .highlight-item img { width: 74px; height: 70px; }
+        .highlight-item h3 { font-size: .97rem; }
+        .highlight-item p { font-size: .82rem; }
+        .treatments { padding: 76px 0 82px; }
+        .treatments-head { margin-bottom: 36px; }
+        .treatment-grid { grid-template-columns: 1fr; }
+        .treatment-card { padding: 22px 0 26px; }
+        .treatment-copy { min-height: 74px; }
+        .treatment-card h3 { font-size: 1.1rem; }
+        .treatment-card p { font-size: .88rem; }
+        .treatments-actions { margin-top: 38px; }
+        .specialists { padding: 76px 0 82px; }
+        .specialists-header { align-items: end; margin-bottom: 24px; }
+        .specialists-header h2 { font-size: clamp(2rem, 8vw, 2.7rem); }
+        .specialists-controls button { width: 36px; height: 36px; }
+        .specialist-card { flex-basis: min(68vw, 260px); }
+        .approach { padding: 72px 0 320px; background-size: 100% 100%, auto 370px; }
+        .approach-grid { gap: 42px; padding: 0 24px; }
+        .approach-content h2 { font-size: clamp(2.6rem, 10vw, 3.4rem); }
+        .testimonials { padding: 78px 0 84px; }
+        .testimonials-row { grid-template-columns: 1fr; }
+        .testimonial-card { min-height: 400px; padding: 23px; }
+        .testimonial-intro { min-height: 300px; }
+        .testimonials-track .testimonial-card { flex-basis: min(82vw, 310px); }
         .footer-row { align-items: flex-start; flex-direction: column; }
       }
     </style>
@@ -224,14 +305,17 @@
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="brand" href="#inicio" aria-label="Essenza Estética, início">
-          <span class="brand-mark">e</span>
-          <span>ESSENZA / ESTÉTICA</span>
+          <img class="brand-logo" src="assets/logo-essenza-verde.webp" alt="" />
         </a>
         <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
         <nav class="nav-links" aria-label="Navegação principal">
+          <a href="#inicio">Início</a>
+          <a href="#diferenciais">Diferenciais</a>
           <a href="#manifesto">Manifesto</a>
-          <a href="#tratamentos">Tratamentos</a>
-          <a href="#abordagem">A Essenza</a>
+          <a href="#tratamentos">Procedimentos</a>
+          <a href="#especialistas">Especialistas</a>
+          <a href="#abordagem">Abordagem</a>
+          <a href="#depoimentos">Depoimentos</a>
           <a class="nav-cta" href="#contato">Agende sua avaliação</a>
         </nav>
       </div>
@@ -246,12 +330,13 @@
         <div class="hero-media-cards" aria-hidden="true">
           <div class="hero-media-card"><img src="assets/hero-essenza.png" alt="" /></div>
           <div class="hero-media-card"><img src="assets/about-essenza.png" alt="" /></div>
+          <div class="hero-media-card"><img src="assets/procedimento-hidratacao.png" alt="" /></div>
         </div>
         <div class="hero-band">
           <div class="hero-band-copy">
             <p class="hero-lede">Tratamentos sob medida para realçar sua beleza com naturalidade.</p>
             <div class="actions">
-              <a class="button" href="#tratamentos">Conheça nossos tratamentos</a>
+              <a class="button" href="#tratamentos">Conheça nossos procedimentos</a>
               <a class="button button-ghost" href="#contato">Agende sua avaliação</a>
             </div>
           </div>
@@ -259,16 +344,37 @@
         <img class="hero-model" src="assets/modelo-hero-essenza.png" alt="Modelo com o rosto apoiado nos braços" />
       </section>
 
-      <div class="proof-strip" aria-label="Diferenciais Essenza">
-        <div class="container proof-grid">
-          <div class="proof-item"><span class="proof-number">01</span><span class="proof-label">Atendimento individualizado</span></div>
-          <div class="proof-item"><span class="proof-number">02</span><span class="proof-label">Protocolos sob medida</span></div>
-          <div class="proof-item"><span class="proof-number">03</span><span class="proof-label">Resultados naturais</span></div>
-          <div class="proof-item"><span class="proof-number">04</span><span class="proof-label">Experiência premium</span></div>
+      <section class="highlights" id="diferenciais" aria-labelledby="highlights-title">
+        <div class="container highlights-grid">
+          <div class="highlights-intro">
+            <p class="eyebrow">Por que Essenza</p>
+            <h2 id="highlights-title">A beleza é sua. <em>O cuidado é nosso.</em></h2>
+            <p>Um jeito de cuidar que une escuta, precisão e leveza para valorizar o que há de único em você.</p>
+            <a class="button" href="#contato">Agende sua avaliação</a>
+          </div>
+          <div class="highlight-list" aria-label="Diferenciais Essenza">
+            <article class="highlight-item">
+              <img src="assets/destaque-atendimento.png" alt="Profissional em conversa com cliente" loading="lazy" />
+              <div><h3>Atendimento individualizado</h3><p>Escuta atenta em cada etapa.</p></div>
+            </article>
+            <article class="highlight-item">
+              <img src="assets/destaque-protocolos.png" alt="Seleção de produtos para cuidados estéticos" loading="lazy" />
+              <div><h3>Protocolos sob medida</h3><p>Planos de cuidado feitos para você.</p></div>
+            </article>
+            <article class="highlight-item">
+              <img src="assets/destaque-resultados.png" alt="Mulher com expressão confiante e pele natural" loading="lazy" />
+              <div><h3>Resultados naturais</h3><p>Sua beleza em equilíbrio, sem excessos.</p></div>
+            </article>
+            <article class="highlight-item">
+              <img src="assets/destaque-experiencia.png" alt="Ambiente acolhedor da clínica" loading="lazy" />
+              <div><h3>Experiência premium</h3><p>Conforto e atenção aos detalhes.</p></div>
+            </article>
+          </div>
         </div>
-      </div>
+      </section>
 
       <section class="manifesto" id="manifesto">
+        <img class="manifesto-founder" src="assets/manifesto-fundadora.png" alt="Fundadora fictícia da Essenza Estética" loading="lazy" decoding="async" />
         <div class="container manifesto-grid">
           <div>
             <p class="eyebrow">O nosso manifesto</p>
@@ -284,44 +390,99 @@
 
       <section class="treatments" id="tratamentos">
         <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Cuidado sob medida</p>
-              <h2>Tratamentos que respeitam o seu tempo.</h2>
-            </div>
-            <p class="section-intro">Uma seleção de possibilidades para cuidar da pele, do corpo e da sua autoestima com intenção.</p>
+          <div class="treatments-head">
+            <p class="eyebrow">Cuidado sob medida</p>
+            <h2>Nossos <em>procedimentos</em></h2>
           </div>
           <div class="treatment-grid">
-            <article class="treatment-card">
-              <div class="treatment-index"><span>01</span><span class="card-symbol">✦</span></div>
-              <div><h3>Harmonização facial</h3><p>Protocolos que preservam a identidade e valorizam os traços individuais.</p></div>
+            <a class="treatment-card" href="#contato">
+              <div class="treatment-copy"><div><h3>Limpeza de pele</h3><p>Cuidado profundo para renovar a pele.</p></div><span class="treatment-arrow" aria-hidden="true">↗</span></div>
+              <img src="assets/procedimento-limpeza.png" alt="" loading="lazy" />
+            </a>
+            <a class="treatment-card" href="#contato">
+              <div class="treatment-copy"><div><h3>Hidratação facial</h3><p>Conforto e viço em cada etapa.</p></div><span class="treatment-arrow" aria-hidden="true">↗</span></div>
+              <img src="assets/procedimento-hidratacao.png" alt="" loading="lazy" />
+            </a>
+            <a class="treatment-card" href="#contato">
+              <div class="treatment-copy"><div><h3>Peeling suave</h3><p>Textura e luminosidade com delicadeza.</p></div><span class="treatment-arrow" aria-hidden="true">↗</span></div>
+              <img src="assets/procedimento-peeling.png" alt="" loading="lazy" />
+            </a>
+            <a class="treatment-card" href="#contato">
+              <div class="treatment-copy"><div><h3>Harmonização facial</h3><p>Equilíbrio que respeita seus traços.</p></div><span class="treatment-arrow" aria-hidden="true">↗</span></div>
+              <img src="assets/destaque-resultados.png" alt="" loading="lazy" />
+            </a>
+            <a class="treatment-card" href="#contato">
+              <div class="treatment-copy"><div><h3>Drenagem linfática</h3><p>Leveza e atenção ao corpo.</p></div><span class="treatment-arrow" aria-hidden="true">↗</span></div>
+              <img src="assets/procedimento-drenagem.png" alt="" loading="lazy" />
+            </a>
+            <a class="treatment-card" href="#contato">
+              <div class="treatment-copy"><div><h3>Estética corporal</h3><p>Protocolos pensados para seu momento.</p></div><span class="treatment-arrow" aria-hidden="true">↗</span></div>
+              <img src="assets/procedimento-corporal.png" alt="" loading="lazy" />
+            </a>
+            <a class="treatment-card" href="#contato">
+              <div class="treatment-copy"><div><h3>Massagem relaxante</h3><p>Uma pausa para o corpo e a mente.</p></div><span class="treatment-arrow" aria-hidden="true">↗</span></div>
+              <img src="assets/procedimento-massagem.png" alt="" loading="lazy" />
+            </a>
+            <a class="treatment-card" href="#contato">
+              <div class="treatment-copy"><div><h3>Avaliação personalizada</h3><p>O primeiro passo de um cuidado só seu.</p></div><span class="treatment-arrow" aria-hidden="true">↗</span></div>
+              <img src="assets/destaque-atendimento.png" alt="" loading="lazy" />
+            </a>
+          </div>
+          <div class="treatments-actions">
+            <a class="button" href="#contato">Agende sua avaliação</a>
+            <a class="button button-outline" href="#abordagem">Conheça nossa abordagem</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="specialists" id="especialistas" aria-labelledby="specialists-title">
+        <div class="container">
+          <div class="specialists-header">
+            <h2 id="specialists-title">Nossos <em>especialistas</em></h2>
+            <div class="specialists-controls" aria-label="Navegar pelos especialistas">
+              <button type="button" data-specialists-step="-1" aria-label="Especialista anterior">‹</button>
+              <button type="button" data-specialists-step="1" aria-label="Próximo especialista">›</button>
+            </div>
+          </div>
+          <div class="specialists-track" aria-label="Equipe fictícia da Essenza" tabindex="0">
+            <article class="specialist-card">
+              <img src="assets/about-essenza.png" alt="Retrato de Marina Azevedo" loading="lazy" />
+              <h3>Marina Azevedo</h3>
+              <p>Fundadora e especialista em protocolos personalizados.</p>
             </article>
-            <article class="treatment-card">
-              <div class="treatment-index"><span>02</span><span class="card-symbol">◌</span></div>
-              <div><h3>Estética corporal</h3><p>Contorno, firmeza e definição com estratégias personalizadas para você.</p></div>
+            <article class="specialist-card">
+              <img src="assets/especialista-camila.png" alt="Retrato de Camila Nascimento" loading="lazy" />
+              <h3>Camila Nascimento</h3>
+              <p>Estética facial e cuidado atento à pele.</p>
             </article>
-            <article class="treatment-card">
-              <div class="treatment-index"><span>03</span><span class="card-symbol">⌁</span></div>
-              <div><h3>Tecnologias avançadas</h3><p>Equipamentos de última geração escolhidos a partir das suas necessidades.</p></div>
+            <article class="specialist-card">
+              <img src="assets/especialista-livia.png" alt="Retrato de Lívia Tanaka" loading="lazy" />
+              <h3>Lívia Tanaka</h3>
+              <p>Cosmetologia e tratamentos faciais.</p>
             </article>
-            <article class="treatment-card">
-              <div class="treatment-index"><span>04</span><span class="card-symbol">◒</span></div>
-              <div><h3>Skin care</h3><p>Cuidados faciais que acompanham o momento e a singularidade da sua pele.</p></div>
+            <article class="specialist-card">
+              <img src="assets/especialista-helena.png" alt="Retrato de Helena Duarte" loading="lazy" />
+              <h3>Helena Duarte</h3>
+              <p>Avaliação estética e resultados naturais.</p>
+            </article>
+            <article class="specialist-card">
+              <img src="assets/especialista-renata.png" alt="Retrato de Renata Costa" loading="lazy" />
+              <h3>Renata Costa</h3>
+              <p>Terapias corporais e bem-estar.</p>
             </article>
           </div>
         </div>
       </section>
 
       <section class="approach" id="abordagem">
-        <div class="container approach-grid">
-          <div class="approach-image-wrap">
-            <img class="approach-image" src="assets/about-essenza.png" alt="Mulher com expressão confiante em ambiente acolhedor" loading="lazy" />
-          </div>
+        <div class="approach-grid">
           <div class="approach-content">
             <p class="eyebrow">Uma beleza com intenção</p>
             <h2>Cuidado que começa no olhar — e continua em <em>cada detalhe.</em></h2>
             <p class="approach-lede">Na Essenza, o atendimento é construído em torno de você. Avaliamos objetivos, rotina, características e desejos para criar uma jornada possível, elegante e coerente com quem você é.</p>
-            <div class="feature-list">
+          </div>
+          <div class="approach-features">
+            <div class="feature-list" aria-label="Nossos compromissos">
               <div class="feature"><span>✓</span>Profissionais especializados</div>
               <div class="feature"><span>✓</span>Escuta atenta e acolhedora</div>
               <div class="feature"><span>✓</span>Protocolos individualizados</div>
@@ -331,14 +492,37 @@
         </div>
       </section>
 
-      <section class="testimonials">
+      <section class="testimonials" id="depoimentos" aria-labelledby="testimonials-title">
         <div class="container">
-          <p class="eyebrow">Experiências Essenza</p>
-          <h2>Quando o resultado faz sentido para você.</h2>
-          <div class="quote-grid">
-            <article class="quote-card"><div class="quote-mark">“</div><blockquote>Saí da avaliação me sentindo ouvida. O protocolo respeitou a minha rotina e o resultado ficou muito natural.</blockquote><p class="quote-author">Marina, 38 anos</p></article>
-            <article class="quote-card"><div class="quote-mark">“</div><blockquote>O atendimento tem um cuidado raro. Tudo é explicado com clareza e sem aquela pressão para fazer mais.</blockquote><p class="quote-author">Luiza, 31 anos</p></article>
-            <article class="quote-card"><div class="quote-mark">“</div><blockquote>Voltei a olhar para a minha pele com carinho. A Essenza trouxe leveza para o meu autocuidado.</blockquote><p class="quote-author">Camila, 44 anos</p></article>
+          <div class="testimonials-row">
+            <div class="testimonial-card testimonial-intro">
+              <p class="eyebrow">Experiências Essenza</p>
+              <h2 id="testimonials-title">Quando o resultado <em>faz sentido para você.</em></h2>
+              <div class="testimonial-controls" aria-label="Navegar pelos depoimentos">
+                <button type="button" data-testimonial-step="-1" aria-label="Depoimento anterior">‹</button>
+                <button type="button" data-testimonial-step="1" aria-label="Próximo depoimento">›</button>
+              </div>
+              <div class="testimonial-avatars" aria-hidden="true">
+                <img src="assets/depoimento-marina.png" alt="" loading="lazy" />
+                <img src="assets/depoimento-luiza.png" alt="" loading="lazy" />
+                <img src="assets/depoimento-camila.png" alt="" loading="lazy" />
+                <span>03</span>
+              </div>
+            </div>
+            <div class="testimonials-track" aria-label="Depoimentos fictícios" tabindex="0">
+              <article class="testimonial-card">
+                <div class="testimonial-person"><img src="assets/depoimento-marina.png" alt="Retrato de Marina" loading="lazy" /><div><h3>Marina</h3><p>38 anos</p></div></div>
+                <blockquote>Saí da avaliação me sentindo ouvida. O protocolo respeitou a minha rotina e o resultado ficou muito natural.</blockquote>
+              </article>
+              <article class="testimonial-card">
+                <div class="testimonial-person"><img src="assets/depoimento-luiza.png" alt="Retrato de Luiza" loading="lazy" /><div><h3>Luiza</h3><p>31 anos</p></div></div>
+                <blockquote>O atendimento tem um cuidado raro. Tudo é explicado com clareza e sem aquela pressão para fazer mais.</blockquote>
+              </article>
+              <article class="testimonial-card">
+                <div class="testimonial-person"><img src="assets/depoimento-camila.png" alt="Retrato de Camila" loading="lazy" /><div><h3>Camila</h3><p>44 anos</p></div></div>
+                <blockquote>Voltei a olhar para a minha pele com carinho. A Essenza trouxe leveza para o meu autocuidado.</blockquote>
+              </article>
+            </div>
           </div>
           <p class="quote-note">Depoimentos fictícios criados exclusivamente para este case demonstrativo.</p>
         </div>
@@ -363,13 +547,17 @@
 
     <footer>
       <div class="container footer-row">
-        <a class="brand footer-brand" href="#inicio"><span class="brand-mark">e</span><span>ESSENZA / ESTÉTICA</span></a>
+        <a class="brand footer-brand" href="#inicio" aria-label="Essenza Estética, voltar ao início"><img class="brand-logo" src="assets/logo-essenza-branca.webp" alt="" /></a>
         <p class="footer-copy">Sua beleza, na sua melhor versão.</p>
         <p class="footer-copy">© 2026 Essenza Estética</p>
       </div>
     </footer>
 
     <script>
+      const header = document.querySelector('.site-header');
+      const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
+      window.addEventListener('scroll', updateHeader, { passive: true });
+      updateHeader();
       const menuButton = document.querySelector('.menu-toggle');
       const nav = document.querySelector('.nav-links');
       menuButton?.addEventListener('click', () => {
@@ -380,6 +568,40 @@
         nav.classList.remove('is-open');
         menuButton?.setAttribute('aria-expanded', 'false');
       }));
+      const specialistsTrack = document.querySelector('.specialists-track');
+      const specialistsButtons = document.querySelectorAll('[data-specialists-step]');
+      const updateSpecialistsButtons = () => {
+        if (!specialistsTrack) return;
+        const maxScroll = specialistsTrack.scrollWidth - specialistsTrack.clientWidth;
+        specialistsButtons[0].disabled = specialistsTrack.scrollLeft <= 2;
+        specialistsButtons[1].disabled = specialistsTrack.scrollLeft >= maxScroll - 2;
+      };
+      specialistsButtons.forEach((button) => button.addEventListener('click', () => {
+        const card = specialistsTrack?.querySelector('.specialist-card');
+        if (!card) return;
+        const gap = parseFloat(getComputedStyle(specialistsTrack).gap) || 0;
+        specialistsTrack.scrollBy({ left: Number(button.dataset.specialistsStep) * (card.getBoundingClientRect().width + gap), behavior: 'smooth' });
+      }));
+      specialistsTrack?.addEventListener('scroll', updateSpecialistsButtons, { passive: true });
+      window.addEventListener('resize', updateSpecialistsButtons);
+      updateSpecialistsButtons();
+      const testimonialsTrack = document.querySelector('.testimonials-track');
+      const testimonialButtons = document.querySelectorAll('[data-testimonial-step]');
+      const updateTestimonialButtons = () => {
+        if (!testimonialsTrack || testimonialButtons.length !== 2) return;
+        const maxScroll = testimonialsTrack.scrollWidth - testimonialsTrack.clientWidth;
+        testimonialButtons[0].disabled = testimonialsTrack.scrollLeft <= 2;
+        testimonialButtons[1].disabled = testimonialsTrack.scrollLeft >= maxScroll - 2;
+      };
+      testimonialButtons.forEach((button) => button.addEventListener('click', () => {
+        const card = testimonialsTrack?.querySelector('.testimonial-card');
+        if (!card) return;
+        const gap = parseFloat(getComputedStyle(testimonialsTrack).gap) || 0;
+        testimonialsTrack.scrollBy({ left: Number(button.dataset.testimonialStep) * (card.getBoundingClientRect().width + gap), behavior: 'smooth' });
+      }));
+      testimonialsTrack?.addEventListener('scroll', updateTestimonialButtons, { passive: true });
+      window.addEventListener('resize', updateTestimonialButtons);
+      updateTestimonialButtons();
     </script>
   </body>
 </html>
